@@ -1,12 +1,12 @@
 module dm_1k(
     input [11:0] addr,
-    input [31:0] din,
+    input [`QBBus] din,
     input we,
     input clk,
-    output [31:0] dout
+    output [`QBBus] dout
     );
 
-    reg [7:0] dm[1023:0];
+    reg [`BBus] dm[1023:0];
 
     
 endmodule
