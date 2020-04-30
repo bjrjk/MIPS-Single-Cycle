@@ -3,13 +3,14 @@
 `include "defines.v"
 
 module PC(
-    input clk,
+    input clk,rst,
     input [`QBBus] nextAddr,
-    output reg [`QBBus] addr
+    output reg [`QBBus] addr=32'h0000_3000
     );
 
-    always@ (posedge clk) begin
-        addr<=nextAddr;
+    always@ (posedge clk or posedge rst) begin
+        if(rst)addr<=32'h0000_3000; //异步复位到0x00003000
+        else addr<=nextAddr;
     end
 
 endmodule

@@ -6,11 +6,19 @@ module NAFL(
     input [`QBBus] addr,
     output reg [`QBBus] nextAddr,
     input beq,j,jal,jr,
-    input [`DBBus] beqShift, // beq指令，16比特左移两位后变18比特加到PC
+    input [`DBBus] beqShift, // beq指令，16比特左移两位后变18比特再符号拓展加到PC
     input [25:0] jPadding, // j和jal指令，26比特左移两位后变28比特置PC低位
     input [`QBBus] jrAddr // jr指令从$ra直接读入的32位地址
     );
 
-    
+    wire [`QBBus] nextInstAddr;
+    assign nextInstAddr = addr+4;
+
+    always@ (*) begin
+        if(beq==`t)nextAddr=nextInstAddr+{{14{beqShift[15]}},beqShift,2'b00};
+        else if(j==`t || jal==`t)nextAddr={nextInstAddr[31:28],jPadding,2'b00};
+        else if(jr==`t)nextAddr=jrAddr;
+        else nextAddr=nextInstAddr;
+    end
 
 endmodule
