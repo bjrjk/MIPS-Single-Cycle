@@ -1,7 +1,6 @@
 //全部宏定义头文件
 
 `include "defs/MIPSLite1.v"
-`include "defs/ClterInstBus.v"
 
 `define t 1'b1
 `define f 1'b0
@@ -9,3 +8,42 @@
 `define QBBus 31:0 // Quad Byte Bus
 `define DBBus 15:0 // Double Byte Bus
 `define BBus 7:0 // Byte Bus 
+
+//ALU控制信号宏定义
+`define ALUSIG_ADD 0
+`define ALUSIG_SUB 1
+`define ALUSIG_OR 2
+`define ALUSIG_LUI 3
+
+//译码器至控制器指令信号线对应指令下标宏定义
+`define CTLSIG_NOP 0
+`define CTLSIG_ADDU 1
+`define CTLSIG_SUBU 2
+`define CTLSIG_ORI 3
+`define CTLSIG_LW 4
+`define CTLSIG_SW 5
+`define CTLSIG_BEQ 6
+`define CTLSIG_LUI 7
+`define CTLSIG_J 8
+`define CTLSIG_ADDI 9
+`define CTLSIG_ADDIU 10
+`define CTLSIG_SLT 11
+`define CTLSIG_JAL 12
+`define CTLSIG_JR 13
+
+//寄存器写目的控制信号宏定义
+`define REGWRDSTSIG_RT 0
+`define REGWRDSTSIG_RD 1
+`define REGWRDSTSIG_GPR_RA 2
+
+//位拓展器控制信号宏定义
+`define EXTSIG_ZERO 0
+`define EXTSIG_SIGN 1
+
+//回写控制信号宏定义
+`define WRBACKSIG_ALU 0
+`define WRBACKSIG_MEM 1
+
+//ALU数据源控制信号宏定义
+`define ALUSRCSIG_GPR 0
+`define ALUSRCSIG_EXT 1
