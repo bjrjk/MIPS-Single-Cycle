@@ -14,6 +14,7 @@
 `define ALUSIG_SUB 1
 `define ALUSIG_OR 2
 `define ALUSIG_LUI 3
+`define ALUSIG_SLT 4
 
 //译码器至控制器指令信号线对应指令下标宏定义
 `define CTLSIG_NOP 0
@@ -43,6 +44,7 @@
 //回写控制信号宏定义
 `define WRBACKSIG_ALU 0
 `define WRBACKSIG_MEM 1
+`define WRBACKSIG_PC 2
 
 //ALU数据源控制信号宏定义
 `define ALUSRCSIG_GPR 0

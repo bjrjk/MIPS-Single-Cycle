@@ -10,7 +10,8 @@ module Decoder(
     output wire [25:0] tgtAddr
     );
 
-    wire [5:0] opcode,funct,DecInstIndex;
+    wire [5:0] opcode,funct;
+    reg [5:0] DecInstIndex;
     assign opcode=Inst[31:26];
     assign funct=Inst[5:0];
     assign rs=Inst[25:21];
