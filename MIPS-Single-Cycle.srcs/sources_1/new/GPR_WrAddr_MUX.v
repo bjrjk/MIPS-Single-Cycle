@@ -12,7 +12,7 @@ module GPR_WrAddr_MUX(
         case(RegWrDstCtl)
             `REGWRDSTSIG_RT:out=rt;
             `REGWRDSTSIG_RD:out=rd;
-            `REGWRDSTSIG_GPR_RA:out=5'd30;
+            `REGWRDSTSIG_GPR_RA:out=5'd31;
             default:out=rt;
         endcase
     end

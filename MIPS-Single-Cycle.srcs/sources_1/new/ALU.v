@@ -6,17 +6,21 @@ module ALU(
     input [3:0] ALUCtl,
     input [`QBBus] A,B,
     output reg [`QBBus] C,
-    output reg OF
+    output OF,
+    output wire zero
     );
+
+    assign OF= (A[31]==B[31])&&(C[31]!=A[31]);
+    assign zero= (C==0);
 
     always@ (*) begin
         case(ALUCtl)
-            `ALUSIG_ADD:{OF,C}=A+B;
-            `ALUSIG_SUB:{OF,C}=A-B;
+            `ALUSIG_ADD:C=A+B;
+            `ALUSIG_SUB:C=A-B;
             `ALUSIG_OR:C=A|B;
             `ALUSIG_LUI:C={B[15:0],16'd0};
             `ALUSIG_SLT:C=A<B;
-            default:{OF,C}=A+B;
+            default:C=A+B;
         endcase
     end
 

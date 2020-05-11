@@ -11,13 +11,17 @@ module GPR(
 
     reg [`QBBus] regArr [`QBBus];
 
+    initial regArr[0]=0;
+
     always @(*) begin
-        RdData1=regArr[RdAddr1];
-        RdData2=regArr[RdAddr2];
+        if(RdAddr1!=0)RdData1=regArr[RdAddr1];
+        else RdData1=0;
+        if(RdAddr2!=0)RdData2=regArr[RdAddr2];
+        else RdData2=0;
     end
 
     always @(posedge clk) begin
-        if(WrEn)regArr[WrAddr]<=WrData;
+        if(WrEn&&WrAddr!=0)regArr[WrAddr]<=WrData;
         if(OFWrEn)regArr[30][0]<=OFFlag;
     end
 

@@ -7,6 +7,7 @@ module dm_1k(
     );
 
     reg [`BBus] dm[1023:0];
+    wire [9:0] index;
 
     assign index=addr[9:0];
     //Dout为小端序

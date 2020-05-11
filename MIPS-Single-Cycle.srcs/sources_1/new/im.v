@@ -8,6 +8,7 @@ module im_1k(
     );
 
     reg [`BBus] im[1023:0];
+    wire [9:0] index;
 
     assign index=addr[9:0];
     //Word文档中示例表明IM是大端序

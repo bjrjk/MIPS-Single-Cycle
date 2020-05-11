@@ -36,6 +36,8 @@ module Controller(
             MemWrEn=`t;
         end else if(DecInstBus[`CTLSIG_BEQ]) begin
             RegWrEn=`f;
+            ALUCtl=`ALUSIG_SUB;
+            ALUSrcCtl=`ALUSRCSIG_GPR;
         end else if(DecInstBus[`CTLSIG_LUI]) begin
             ALUCtl=`ALUSIG_LUI;
         end else if(DecInstBus[`CTLSIG_J]) begin
