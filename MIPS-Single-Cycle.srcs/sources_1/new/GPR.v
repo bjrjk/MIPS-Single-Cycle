@@ -10,8 +10,13 @@ module GPR(
     );
 
     reg [`QBBus] regArr [`QBBus];
+    integer i;
 
-    initial regArr[0]=0;
+    initial begin 
+        for(i=0;i<32;i=i+1)regArr[i]=0;
+        regArr[28]=32'h00001800;
+        regArr[29]=32'h00002ffc;
+    end
 
     always @(*) begin
         if(RdAddr1!=0)RdData1=regArr[RdAddr1];

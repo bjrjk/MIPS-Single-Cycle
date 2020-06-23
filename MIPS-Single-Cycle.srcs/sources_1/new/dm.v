@@ -9,6 +9,12 @@ module dm_1k(
     reg [`BBus] dm[1023:0];
     wire [9:0] index;
 
+    integer i;
+
+    initial begin 
+        for(i=0;i<1024;i=i+1)dm[i]=0;
+    end
+
     assign index=addr[9:0];
     //Dout为小端序
     assign dout={dm[index+3],dm[index+2],dm[index+1],dm[index]};
